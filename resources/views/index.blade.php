@@ -1,14 +1,14 @@
-<?php require './functions/config.php'; ?>
-
 <!DOCTYPE html>
 <html lang="en">
-    <?php includeWithVariables('./layout/header.php', array('title' => 'Beranda - Chicken World')); ?>
+    <?php 
+    // includeWithVariables('./layout/header.php', array('title' => 'Beranda - Chicken World')); 
+    ?>
     
     <body class="sb-nav-fixed">
-        <?php include "./layout/navbar.php"; ?>
-    
+    @include('navbar')    
+        
         <div id="layoutSidenav">
-            <?php include "./layout/left-sidebar.php"; ?>
+    @include('left-sidebar')
         
             <div id="layoutSidenav_content">
                 <main class="bg-light">
@@ -145,10 +145,10 @@
                     </div>
                 </main>
                 
-                <?php include "./layout/footer.php"; ?>
+    @include('footer')
             </div>
         </div>
         
-        <?php include "./layout/script.php"; ?>
+    @include('script')
     </body>
 </html>
