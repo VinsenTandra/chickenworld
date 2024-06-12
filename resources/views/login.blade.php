@@ -36,6 +36,7 @@ include "./functions/config.php";
                     </div>
                     <div class="card-footer text-center">
                         <div class="small"><a href="register.html">Need an account? Sign up!</a></div>
+                        
                     </div>
                 </form>
             </div>

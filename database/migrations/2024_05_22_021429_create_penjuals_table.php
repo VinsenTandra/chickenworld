@@ -20,7 +20,7 @@ return new class extends Migration
             $table->string('nama', 50);
             $table->timestamps();
         });
-    }
+    }   
     /**
      * Reverse the migrations.
      *

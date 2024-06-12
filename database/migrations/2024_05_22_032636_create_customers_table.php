@@ -19,7 +19,7 @@ return new class extends Migration
             $table->string('customer_name', 50);
             $table->string('akun_customer', 50);
             $table->string('nomer_telepon', 50);
-            $table->string('alamat', 50);
+            $table->string('alamat', 50);   
             $table->timestamps();
         });
     }

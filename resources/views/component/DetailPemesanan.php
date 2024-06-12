@@ -5,11 +5,11 @@ namespace App\Models\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Customers extends Model
+class detail_pemesanan extends Model
 {
     use HasFactory;
 
-    public $table = 'customer';
+    public $table ='detail_pemesanan';
 
     const CREATED_AT = 'created_at';
     const UPDATED_AT = 'updated_at';
@@ -18,10 +18,8 @@ class Customers extends Model
 
     public $fillable = [
         'id',
-        'customer_id',
-        'customer_name',
-        'akun_customer',
-        'nomer_telepon',
-        'alamat'
+        'kode_produk',
+        'penjualan',
+        'jumlah_pesanan'
     ];
 }
