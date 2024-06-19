@@ -27,8 +27,9 @@ $title = "Tambah data pesanan - Chicken World";
                         <div class="form-group">
                             <label for="produk" class="form-label">Produk</label>
                             <select name="produk" id="produk" class="form-control">
-                                <option value="1">Salted Egg Chicken</option>
-                                <option value="2">Spicy Galbi Chicken</option>
+                                @foreach($products as $product)
+                                <option value="{{ $product->id }}">{{ $product->nama_produk }}</option>
+                                @endforeach
                             </select>
                         </div>
 

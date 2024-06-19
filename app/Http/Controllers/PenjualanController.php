@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Product;
+
 use Illuminate\Http\Request;
 
 class PenjualanController extends Controller
@@ -11,6 +13,8 @@ class PenjualanController extends Controller
     }
 
     public function tambah() {
-        return view("tambah-pesanan");
+        $products = Product::all();
+        return view("tambah-pesanan")
+        ->with('products', $products);
     }
 }
