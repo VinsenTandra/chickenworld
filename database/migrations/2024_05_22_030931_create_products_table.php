@@ -15,9 +15,9 @@ return new class extends Migration
     {
         Schema::create('products', function (Blueprint $table) {
             $table->id();
-            $table->integer('kode_produk')->unsigned();
             $table->string('nama_produk', 100);
-            $table->float('harga', 8, 2);
+            $table->float('harga_produk', 8, 2);
+            $table->enum("status_stok", ["ready", "not ready"])->default("ready");
             $table->timestamps();
         });
     }

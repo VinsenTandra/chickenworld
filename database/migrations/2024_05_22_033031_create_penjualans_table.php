@@ -15,13 +15,17 @@ return new class extends Migration
     {
         Schema::create('penjualans', function (Blueprint $table) {
             $table->id();
-            $table->integer('id_penjualan')->unsigned();
-            $table->integer('customer_id')->unsigned();
-            $table->integer('id_staff')->unsigned();
-            $table->integer('link_website');
+            $table->unsignedBigInteger('product_id');
+            $table->unsignedBigInteger('user_id');
+            $table->string("nomor_pesanan", 20);
+            $table->string("nama_pembeli");
+            $table->enum("is_done", ["y", "n"]);
             $table->date('tanggal_pengambilan');
-            $table->string('jumlah_harga', 50);
+            $table->integer('jumlah_harga');
             $table->timestamps();
+
+            $table->foreign("product_id")->references("id")->on("products")->onDelete("restrict")->onUpdate("cascade");
+            $table->foreign("user_id")->references("id")->on("users")->onDelete("restrict")->onUpdate("cascade");
         });
     }
 
