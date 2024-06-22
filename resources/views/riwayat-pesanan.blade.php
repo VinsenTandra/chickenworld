@@ -42,337 +42,100 @@ $title = "Riwayat Pesanan - Chicken World";
 
                     <div class="list-pesanan active" id="proses-content">
                         <div class="d-flex flex-wrap no-gutters">
-                            <div class="col-xl-6 col-12 p-xl-2 py-2">
-                                <div class="bg-white d-flex flex-wrap align-items-center p-3 shadow-sm">
+                            @foreach ($penjualans->where('is_done', 'n') as $penjualan)
+                                <div class="col-xl-6 col-12 p-xl-2 py-2">
+                                    <div class="bg-white d-flex flex-wrap align-items-center p-3 shadow-sm">
 
-                                    <div class="d-block col-lg-4 col-md-6 col-6 py-2">
-                                        <span class="text-muted order-code">Status Pesanan</span>
-                                        <p class="m-0">Perlu diproses</p>
-                                    </div>
+                                        <div class="d-block col-lg-4 col-md-6 col-6 py-2">
+                                            <span class="text-muted order-code">Status Pesanan</span>
+                                            <p class="m-0">Perlu diproses</p>
+                                        </div>
 
-                                    <div class="d-block col-lg-4 col-md-6 col-6 py-2">
-                                        <span class="text-muted order-code">Nomor pesanan</span>
-                                        <p class="m-0 text-primary">CW000000005</p>
-                                    </div>
+                                        <div class="d-block col-lg-4 col-md-6 col-6 py-2">
+                                            <span class="text-muted order-code">Nomor pesanan</span>
+                                            <p class="m-0 text-primary">{{ $penjualan->nomor_pesanan }}</p>
+                                        </div>
 
-                                    <div class="d-block col-lg-4 col-md-6 col-6 py-2">
-                                        <span class="text-muted order-code">Tanggal Transaksi</span>
-                                        <p class="m-0">25 April 2024</p>
-                                    </div>
+                                        <div class="d-block col-lg-4 col-md-6 col-6 py-2">
+                                            <span class="text-muted order-code">Tanggal Pengambilan</span>
+                                            <p class="m-0">{{ date_format(date_create($penjualan->tanggal_pengambilan), "d M Y") }}</p>
+                                        </div>
 
-                                    <div class="d-block col-lg-4 col-md-6 col-6 py-2">
-                                        <p class="m-0">Salted Egg Chicken</p>
-                                    </div>
+                                        <div class="d-block col-lg-4 col-md-6 col-6 py-2">
+                                            <p class="m-0">{{ $penjualan->product->nama_produk }}</p>
+                                        </div>
 
-                                    <div class="d-block col-lg-4 col-md-6 col-6 py-2">
-                                        <p class="m-0">1 Porsi</p>
-                                    </div>
+                                        <div class="d-block col-lg-4 col-md-6 col-6 py-2">
+                                            <p class="m-0">{{ $penjualan->jumlah_produk }} Porsi</p>
+                                        </div>
 
-                                    <div class="d-block col-lg-4 col-md-6 col-6 py-2">
-                                        <span class="text-muted order-code">Nama Pembeli</span>
-                                        <p class="m-0">Vincent Williamson</p>
-                                    </div>
+                                        <div class="d-block col-lg-4 col-md-6 col-6 py-2">
+                                            <span class="text-muted order-code">Nama Pembeli</span>
+                                            <p class="m-0">{{ $penjualan->nama_pembeli }}</p>
+                                        </div>
 
-                                    <div class="d-block col-lg-4 col-md-6 col-6 py-2">
-                                        <span class="text-muted order-code">Total Harga</span>
-                                        <p class="m-0 text-primary">Rp22.000</p>
-                                    </div>
+                                        <div class="d-block col-lg-4 col-md-6 col-6 py-2">
+                                            <span class="text-muted order-code">Total Harga</span>
+                                            <p class="m-0 text-primary">Rp{{ number_format($penjualan->jumlah_harga, 0, ",", ".") }}</p>
+                                        </div>
 
-                                    <div class="d-block">
-                                        <a class="btn btn-success rounded-pill">Selesai</a>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="col-xl-6 col-12 p-xl-2 py-2">
-                                <div class="bg-white d-flex flex-wrap align-items-center p-3 shadow-sm">
-
-                                    <div class="d-block col-lg-4 col-md-6 col-6 py-2">
-                                        <span class="text-muted order-code">Status Pesanan</span>
-                                        <p class="m-0">Perlu diproses</p>
-                                    </div>
-
-                                    <div class="d-block col-lg-4 col-md-6 col-6 py-2">
-                                        <span class="text-muted order-code">Nomor pesanan</span>
-                                        <p class="m-0 text-primary">CW000000004</p>
-                                    </div>
-
-                                    <div class="d-block col-lg-4 col-md-6 col-6 py-2">
-                                        <span class="text-muted order-code">Tanggal Transaksi</span>
-                                        <p class="m-0">25 April 2024</p>
-                                    </div>
-
-                                    <div class="d-block col-lg-4 col-md-6 col-6 py-2">
-                                        <p class="m-0">Spicy Galbi Chicken</p>
-                                    </div>
-
-                                    <div class="d-block col-lg-4 col-md-6 col-6 py-2">
-                                        <p class="m-0">2 Porsi</p>
-                                    </div>
-
-                                    <div class="d-block col-lg-4 col-md-6 col-6 py-2">
-                                        <span class="text-muted order-code">Nama Pembeli</span>
-                                        <p class="m-0">Vinsen Tandra</p>
-                                    </div>
-
-                                    <div class="d-block col-lg-4 col-md-6 col-6 py-2">
-                                        <span class="text-muted order-code">Total Harga</span>
-                                        <p class="m-0 text-primary">Rp44.000</p>
-                                    </div>
-
-                                    <div class="d-block">
-                                        <a class="btn btn-success rounded-pill">Selesai</a>
+                                        <div class="d-block">
+                                            <form action="{{ route('change-penjualan-status') }}" method="post">
+                                                @csrf
+                                                <input type="hidden" name="id" value="{{ $penjualan->id }}">
+                                                <button type="submit" class="btn btn-success rounded-pill">Selesai</button>
+                                            </form>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-
-                            <div class="col-xl-6 col-12 p-xl-2 py-2">
-                                <div class="bg-white d-flex flex-wrap align-items-center p-3 shadow-sm">
-
-                                    <div class="d-block col-lg-4 col-md-6 col-6 py-2">
-                                        <span class="text-muted order-code">Status Pesanan</span>
-                                        <p class="m-0">Perlu diproses</p>
-                                    </div>
-
-                                    <div class="d-block col-lg-4 col-md-6 col-6 py-2">
-                                        <span class="text-muted order-code">Nomor pesanan</span>
-                                        <p class="m-0 text-primary">CW000000003</p>
-                                    </div>
-
-                                    <div class="d-block col-lg-4 col-md-6 col-6 py-2">
-                                        <span class="text-muted order-code">Tanggal Transaksi</span>
-                                        <p class="m-0">24 April 2024</p>
-                                    </div>
-
-                                    <div class="d-block col-lg-4 col-md-6 col-6 py-2">
-                                        <p class="m-0">Spicy Galbi Chicken</p>
-                                    </div>
-
-                                    <div class="d-block col-lg-4 col-md-6 col-6 py-2">
-                                        <p class="m-0">1 Porsi</p>
-                                    </div>
-
-                                    <div class="d-block col-lg-4 col-md-6 col-6 py-2">
-                                        <span class="text-muted order-code">Nama Pembeli</span>
-                                        <p class="m-0">Vinsen Tandra</p>
-                                    </div>
-
-                                    <div class="d-block col-lg-4 col-md-6 col-6 py-2">
-                                        <span class="text-muted order-code">Total Harga</span>
-                                        <p class="m-0 text-primary">Rp22.000</p>
-                                    </div>
-
-                                    <div class="d-block">
-                                        <a class="btn btn-success rounded-pill">Selesai</a>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="col-xl-6 col-12 p-xl-2 py-2">
-                                <div class="bg-white d-flex flex-wrap align-items-center p-3 shadow-sm">
-
-                                    <div class="d-block col-lg-4 col-md-6 col-6 py-2">
-                                        <span class="text-muted order-code">Status Pesanan</span>
-                                        <p class="m-0">Perlu diproses</p>
-                                    </div>
-
-                                    <div class="d-block col-lg-4 col-md-6 col-6 py-2">
-                                        <span class="text-muted order-code">Nomor pesanan</span>
-                                        <p class="m-0 text-primary">CW000000002</p>
-                                    </div>
-
-                                    <div class="d-block col-lg-4 col-md-6 col-6 py-2">
-                                        <span class="text-muted order-code">Tanggal Transaksi</span>
-                                        <p class="m-0">23 April 2024</p>
-                                    </div>
-
-                                    <div class="d-block col-lg-4 col-md-6 col-6 py-2">
-                                        <p class="m-0">Salted Egg Chicken</p>
-                                    </div>
-
-                                    <div class="d-block col-lg-4 col-md-6 col-6 py-2">
-                                        <p class="m-0">1 Porsi</p>
-                                    </div>
-
-                                    <div class="d-block col-lg-4 col-md-6 col-6 py-2">
-                                        <span class="text-muted order-code">Nama Pembeli</span>
-                                        <p class="m-0">Matthew Abel</p>
-                                    </div>
-
-                                    <div class="d-block col-lg-4 col-md-6 col-6 py-2">
-                                        <span class="text-muted order-code">Total Harga</span>
-                                        <p class="m-0 text-primary">Rp22.000</p>
-                                    </div>
-
-                                    <div class="d-block">
-                                        <a class="btn btn-success rounded-pill">Selesai</a>
-                                    </div>
-                                </div>
-                            </div>
+                            @endforeach
                         </div>
-
                     </div>
 
                     <div class="list-pesanan" id="selesai-content">
                         <div class="d-flex flex-wrap no-gutters">
-                            <div class="col-xl-6 col-12 p-xl-2 py-2">
-                                <div class="bg-white d-flex flex-wrap align-items-center p-3 shadow-sm">
+                            @foreach ($penjualans->where('is_done', 'y') as $penjualan)
+                                <div class="col-xl-6 col-12 p-xl-2 py-2">
+                                    <div class="bg-white d-flex flex-wrap align-items-center p-3 shadow-sm">
 
-                                    <div class="d-block col-lg-4 col-md-6 col-6 py-2">
-                                        <span class="text-muted order-code">Status Pesanan</span>
-                                        <p class="m-0">Pesanan Selesai</p>
+                                        <div class="d-block col-lg-4 col-md-6 col-6 py-2">
+                                            <span class="text-muted order-code">Status Pesanan</span>
+                                            <p class="m-0">Pesanan Selesai</p>
+                                        </div>
+
+                                        <div class="d-block col-lg-4 col-md-6 col-6 py-2">
+                                            <span class="text-muted order-code">Nomor pesanan</span>
+                                            <p class="m-0 text-primary">{{ $penjualan->nomor_pesanan }}</p>
+                                        </div>
+
+                                        <div class="d-block col-lg-4 col-md-6 col-6 py-2">
+                                            <span class="text-muted order-code">Tanggal Pengambilan</span>
+                                            <p class="m-0">{{ date_format(date_create($penjualan->tanggal_pengambilan), "d M Y") }}</p>
+                                        </div>
+
+                                        <div class="d-block col-lg-4 col-md-6 col-6 py-2">
+                                            <p class="m-0">{{ $penjualan->product->nama_produk }}</p>
+                                        </div>
+
+                                        <div class="d-block col-lg-4 col-md-6 col-6 py-2">
+                                            <p class="m-0">{{ $penjualan->jumlah_produk }} Porsi</p>
+                                        </div>
+
+                                        <div class="d-block col-lg-4 col-md-6 col-6 py-2">
+                                            <span class="text-muted order-code">Nama Pembeli</span>
+                                            <p class="m-0">{{ $penjualan->nama_pembeli }}</p>
+                                        </div>
+
+                                        <div class="d-block col-lg-4 col-md-6 col-6 py-2">
+                                            <span class="text-muted order-code">Total Harga</span>
+                                            <p class="m-0 text-primary">Rp{{ number_format($penjualan->jumlah_harga, 0, ",", ".") }}</p>
+                                        </div>
                                     </div>
-
-                                    <div class="d-block col-lg-4 col-md-6 col-6 py-2">
-                                        <span class="text-muted order-code">Nomor pesanan</span>
-                                        <p class="m-0 text-primary">CW000000009</p>
-                                    </div>
-
-                                    <div class="d-block col-lg-4 col-md-6 col-6 py-2">
-                                        <span class="text-muted order-code">Tanggal Transaksi</span>
-                                        <p class="m-0">25 April 2024</p>
-                                    </div>
-
-                                    <div class="d-block col-lg-4 col-md-6 col-6 py-2">
-                                        <p class="m-0">Salted Egg Chicken</p>
-                                    </div>
-
-                                    <div class="d-block col-lg-4 col-md-6 col-6 py-2">
-                                        <p class="m-0">1 Porsi</p>
-                                    </div>
-
-                                    <div class="d-block col-lg-4 col-md-6 col-6 py-2">
-                                        <span class="text-muted order-code">Nama Pembeli</span>
-                                        <p class="m-0">Vincent Williamson</p>
-                                    </div>
-
-                                    <div class="d-block col-lg-4 col-md-6 col-6 py-2">
-                                        <span class="text-muted order-code">Total Harga</span>
-                                        <p class="m-0 text-primary">Rp22.000</p>
-                                    </div>
-
                                 </div>
-                            </div>
-
-                            <div class="col-xl-6 col-12 p-xl-2 py-2">
-                                <div class="bg-white d-flex flex-wrap align-items-center p-3 shadow-sm">
-
-                                    <div class="d-block col-lg-4 col-md-6 col-6 py-2">
-                                        <span class="text-muted order-code">Status Pesanan</span>
-                                        <p class="m-0">Pesanan Selesai</p>
-                                    </div>
-
-                                    <div class="d-block col-lg-4 col-md-6 col-6 py-2">
-                                        <span class="text-muted order-code">Nomor pesanan</span>
-                                        <p class="m-0 text-primary">CW000000008</p>
-                                    </div>
-
-                                    <div class="d-block col-lg-4 col-md-6 col-6 py-2">
-                                        <span class="text-muted order-code">Tanggal Transaksi</span>
-                                        <p class="m-0">25 April 2024</p>
-                                    </div>
-
-                                    <div class="d-block col-lg-4 col-md-6 col-6 py-2">
-                                        <p class="m-0">Salted Egg Chicken</p>
-                                    </div>
-
-                                    <div class="d-block col-lg-4 col-md-6 col-6 py-2">
-                                        <p class="m-0">1 Porsi</p>
-                                    </div>
-
-                                    <div class="d-block col-lg-4 col-md-6 col-6 py-2">
-                                        <span class="text-muted order-code">Nama Pembeli</span>
-                                        <p class="m-0">Vincent Williamson</p>
-                                    </div>
-
-                                    <div class="d-block col-lg-4 col-md-6 col-6 py-2">
-                                        <span class="text-muted order-code">Total Harga</span>
-                                        <p class="m-0 text-primary">Rp22.000</p>
-                                    </div>
-
-                                </div>
-                            </div>
-
-                            <div class="col-xl-6 col-12 p-xl-2 py-2">
-                                <div class="bg-white d-flex flex-wrap align-items-center p-3 shadow-sm">
-
-                                    <div class="d-block col-lg-4 col-md-6 col-6 py-2">
-                                        <span class="text-muted order-code">Status Pesanan</span>
-                                        <p class="m-0">Pesanan Selesai</p>
-                                    </div>
-
-                                    <div class="d-block col-lg-4 col-md-6 col-6 py-2">
-                                        <span class="text-muted order-code">Nomor pesanan</span>
-                                        <p class="m-0 text-primary">CW000000007</p>
-                                    </div>
-
-                                    <div class="d-block col-lg-4 col-md-6 col-6 py-2">
-                                        <span class="text-muted order-code">Tanggal Transaksi</span>
-                                        <p class="m-0">25 April 2024</p>
-                                    </div>
-
-                                    <div class="d-block col-lg-4 col-md-6 col-6 py-2">
-                                        <p class="m-0">Salted Egg Chicken</p>
-                                    </div>
-
-                                    <div class="d-block col-lg-4 col-md-6 col-6 py-2">
-                                        <p class="m-0">1 Porsi</p>
-                                    </div>
-
-                                    <div class="d-block col-lg-4 col-md-6 col-6 py-2">
-                                        <span class="text-muted order-code">Nama Pembeli</span>
-                                        <p class="m-0">Vincent Williamson</p>
-                                    </div>
-
-                                    <div class="d-block col-lg-4 col-md-6 col-6 py-2">
-                                        <span class="text-muted order-code">Total Harga</span>
-                                        <p class="m-0 text-primary">Rp22.000</p>
-                                    </div>
-
-                                </div>
-                            </div>
-
-                            <div class="col-xl-6 col-12 p-xl-2 py-2">
-                                <div class="bg-white d-flex flex-wrap align-items-center p-3 shadow-sm">
-
-                                    <div class="d-block col-lg-4 col-md-6 col-6 py-2">
-                                        <span class="text-muted order-code">Status Pesanan</span>
-                                        <p class="m-0">Pesanan Selesai</p>
-                                    </div>
-
-                                    <div class="d-block col-lg-4 col-md-6 col-6 py-2">
-                                        <span class="text-muted order-code">Nomor pesanan</span>
-                                        <p class="m-0 text-primary">CW000000006</p>
-                                    </div>
-
-                                    <div class="d-block col-lg-4 col-md-6 col-6 py-2">
-                                        <span class="text-muted order-code">Tanggal Transaksi</span>
-                                        <p class="m-0">25 April 2024</p>
-                                    </div>
-
-                                    <div class="d-block col-lg-4 col-md-6 col-6 py-2">
-                                        <p class="m-0">Salted Egg Chicken</p>
-                                    </div>
-
-                                    <div class="d-block col-lg-4 col-md-6 col-6 py-2">
-                                        <p class="m-0">1 Porsi</p>
-                                    </div>
-
-                                    <div class="d-block col-lg-4 col-md-6 col-6 py-2">
-                                        <span class="text-muted order-code">Nama Pembeli</span>
-                                        <p class="m-0">Vincent Williamson</p>
-                                    </div>
-
-                                    <div class="d-block col-lg-4 col-md-6 col-6 py-2">
-                                        <span class="text-muted order-code">Total Harga</span>
-                                        <p class="m-0 text-primary">Rp22.000</p>
-                                    </div>
-
-                                </div>
-                            </div>
+                            @endforeach
                         </div>
-
                     </div>
+
                 </div>
             </main>
 
@@ -380,27 +143,27 @@ $title = "Riwayat Pesanan - Chicken World";
         </div>
     </div>
 
-    @include("layout.script")
+@include("layout.script")
 
-    <script>
-        function setActive(e) {
-            const history_pesanan = document.querySelectorAll(".riwayat-pesanan");
-            const list_pesanan = document.querySelectorAll(".list-pesanan");
+<script>
+    function setActive(e) {
+        const history_pesanan = document.querySelectorAll(".riwayat-pesanan");
+        const list_pesanan = document.querySelectorAll(".list-pesanan");
 
-            for(pesanan of history_pesanan) {
-                pesanan.classList.remove('active');
-            }
-
-            for(pesanan of list_pesanan) {
-                pesanan.classList.remove('active');
-            }
-
-            document.getElementById(e.id).classList.add('active');
-
-            if(e.id == "proses") document.getElementById('proses-content').classList.add('active');
-            if(e.id == "selesai") document.getElementById('selesai-content').classList.add('active');
+        for(pesanan of history_pesanan) {
+            pesanan.classList.remove('active');
         }
-    </script>
+
+        for(pesanan of list_pesanan) {
+            pesanan.classList.remove('active');
+        }
+
+        document.getElementById(e.id).classList.add('active');
+
+        if(e.id == "proses") document.getElementById('proses-content').classList.add('active');
+        if(e.id == "selesai") document.getElementById('selesai-content').classList.add('active');
+    }
+</script>
 </body>
 
 </html>

@@ -21,6 +21,7 @@ return new class extends Migration
             $table->string("nama_pembeli");
             $table->enum("is_done", ["y", "n"]);
             $table->date('tanggal_pengambilan');
+            $table->integer('jumlah_produk');
             $table->integer('jumlah_harga');
             $table->timestamps();
 

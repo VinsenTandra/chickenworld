@@ -1,6 +1,7 @@
 @php
-$fitur = (isset($_GET['aksi'])) ? "Edit" : "Tambah";
+$fitur = (isset($product)) ? "Edit" : "Tambah";
 $title = "{$fitur} data produk - Chicken World";
+$route = (isset($product)) ? route("product-update") : route("product-save");
 @endphp
 
 <!DOCTYPE html>
@@ -20,20 +21,21 @@ $title = "{$fitur} data produk - Chicken World";
                 <div class="container-fluid">
                     <h4 class="p-2 m-0"><?= $fitur; ?> Produk</h4>
 
-                    <form class="p-2" action="{{ route("product-save") }}" method="post" enctype="multipart/form-data">
+                    <form class="p-2" action="{{ $route }}" method="post" enctype="multipart/form-data">
                         @csrf
+                        <input type="hidden" name="id" value="{{ isset($product) ? $product->id : "" }}">
                         <div class="form-group">
                             <label for="nama" class="form-label">Nama Produk</label>
-                            <input name="nama_produk" id="nama_produk" class="form-control" type="text" placeholder="Silahkan isi nama produk">
+                            <input name="nama_produk" id="nama_produk" class="form-control" value="{{ isset($product) ? $product->nama_produk : "" }}" type="text" placeholder="Silahkan isi nama produk">
                         </div>
 
                         <div class="form-group">
                             <label for="harga_produk" class="form-label">Harga Produk</label>
-                            <input name="harga_produk" id="harga_produk" class="form-control" type="number">
+                            <input name="harga_produk" id="harga_produk" class="form-control" value="{{ isset($product) ? $product->harga_produk : "" }}" type="number">
                         </div>
 
                         <div class="form-group">
-                            <button type="submit" class="btn btn-primary col-12">Tambah Produk</button>
+                            <button type="submit" class="btn btn-primary col-12">{{ $fitur }} Produk</button>
                         </div>
                     </form>
                 </div>

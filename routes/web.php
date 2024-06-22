@@ -21,11 +21,18 @@ Route::get("/", [AuthController::class, 'index'])->name('login');
 Route::post("/login", [AuthController::class, 'login'])->name("login-auth");
 Route::get("/logout", [AuthController::class, 'logout'])->name("logout");
 
-Route::get("/dashboard", [DashboardController::class, "index"])->name("dashboard");
+Route::group(['middleware' => "auth:web"], function() {
+    Route::get("/dashboard", [DashboardController::class, "index"])->name("dashboard");
 
-Route::get("/produk", [ProductController::class, "index"])->name("product");
-Route::get("/produk/tambah", [ProductController::class, "tambah"])->name("product-tambah");
-Route::post("/produk/tambah", [ProductController::class, "save"])->name("product-save");
+    Route::get("/produk", [ProductController::class, "index"])->name("product");
+    Route::get("/produk/tambah", [ProductController::class, "tambah"])->name("product-tambah");
+    Route::post("/produk/tambah", [ProductController::class, "save"])->name("product-save");
+    Route::get("/produk/edit/{id}", [ProductController::class, "edit"])->name("product-edit");
+    Route::post("/produk/edit", [ProductController::class, "update"])->name("product-update");
+    Route::post("/produk/change-status", [ProductController::class, "changeStatus"])->name("change-product-status");
 
-Route::get("/penjualan", [PenjualanController::class, "index"])->name("penjualan");
-Route::get("/penjualan/tambah", [PenjualanController::class, "tambah"])->name("penjualan-tambah");
+    Route::get("/penjualan", [PenjualanController::class, "index"])->name("penjualan");
+    Route::get("/penjualan/tambah", [PenjualanController::class, "tambah"])->name("penjualan-tambah");
+    Route::post("/penjualan/tambah", [PenjualanController::class, "save"])->name("penjualan-save");
+    Route::post("/penjualan/change-status", [PenjualanController::class, "changeStatus"])->name("change-penjualan-status");
+});

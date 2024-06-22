@@ -19,8 +19,8 @@ $title = "Daftar Produk - Chicken World";
                 <div class="container-fluid">
                     <h4 class="p-xl-2 py-2 m-0">List Produk</h4>
                     <div class="d-flex flex-wrap no-gutters">
-                        <div class="col-xl-6 col-12 p-xl-2 py-2">
-                            @foreach ($data as $produk)
+                        @foreach ($data as $produk)
+                            <div class="col-lg-6 col-12 p-xl-2 py-2">
                                 <div class="bg-white d-flex flex-wrap justify-content-between align-items-center gap-1 p-3">
                                     <div class="d-block">
                                         <span class="text-muted order-code">Nama Produk</span>
@@ -34,18 +34,22 @@ $title = "Daftar Produk - Chicken World";
 
                                     <div class="d-block">
                                         <span class="text-muted order-code">Status</span>
-                                        <select name="status_ready" id="status_ready_1" class="rounded form-control p-0">
-                                            <option value="ready">Ready</option>
-                                            <option value="not_ready">Not Ready</option>
-                                        </select>
+                                        <form id="{{ "status_product_form_".$produk->id }}" action="{{ route('change-product-status') }}" method="post">
+                                            @csrf
+                                            <input type="hidden" name="id" value="{{ $produk->id }}">
+                                            <select name="status_stok" id="status_stok" onchange="changeStatusStok({{$produk->id}})" class="rounded form-control p-0">
+                                                <option value="ready" {{ ($produk->status_stok == "ready") ? "selected" : "" }}>Ready</option>
+                                                <option value="not ready" {{ ($produk->status_stok == "not ready") ? "selected" : "" }}>Not Ready</option>
+                                            </select>
+                                        </form>
                                     </div>
 
                                     <div class="d-block">
-                                        <a href="tambah-produk.php?aksi=edit&id_produk=1" class="btn btn-outline-secondary rounded-pill">Edit</a>
+                                        <a href="{{ route('product-edit', ['id' => $produk->id] ) }}" class="btn btn-outline-secondary rounded-pill">Edit</a>
                                     </div>
                                 </div>
-                            @endforeach
-                        </div>
+                            </div>
+                        @endforeach
 
                     </div>
                 </div>
@@ -55,7 +59,14 @@ $title = "Daftar Produk - Chicken World";
         </div>
     </div>
 
-    @include("layout.script")
+@include("layout.script")
+
+<script>
+
+function changeStatusStok(id) {
+    document.getElementById(`status_product_form_${id}`).submit();
+}
+</script>
 
 </body>
 

@@ -27,7 +27,7 @@ class AuthController extends Controller
             return redirect()->intended('dashboard');
         }
 
-        return redirect()->withErrors("message", "Gagal login");
+        return back()->withErrors("message", "Gagal login");
     }
 
     public function logout()
@@ -36,7 +36,7 @@ class AuthController extends Controller
 
         Auth::logout();
         return redirect('/');
-        
+
     }
 }
 
